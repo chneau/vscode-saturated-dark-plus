@@ -17,12 +17,13 @@ func panicIf(err error) {
 	}
 }
 
-func saturate(val string) (string, error) {
+func saturate(val string, saturation float64) (string, error) {
 	if len(val) > 6 {
 		cf, err := colorful.Hex(val[:7])
 		panicIf(err)
 		h, s, v := cf.Hsv()
-		cf = colorful.Hsv(h, s*1.5, v).Clamped()
+		cf = colorful.Hsv(h, s*saturation, v).Clamped()
+		colorful.FastHappyColor()
 		newColor := cf.Hex()
 		return strings.ReplaceAll(val, val[:7], newColor), nil
 	}
@@ -37,13 +38,13 @@ func main() {
 	theme.Name = "Saturated Dark+"
 	panicIf(json.Unmarshal(file, &theme))
 	for key, val := range theme.Colors {
-		res, err := saturate(val)
+		res, err := saturate(val, 1.5)
 		panicIf(err)
 		theme.Colors[key] = res
 	}
 	for i, val := range theme.TokenColors {
 		if val.Settings.Foreground != nil {
-			res, err := saturate(*val.Settings.Foreground)
+			res, err := saturate(*val.Settings.Foreground, 2.3)
 			panicIf(err)
 			theme.TokenColors[i].Settings.Foreground = &res
 		}
