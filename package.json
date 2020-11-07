@@ -1,23 +1,23 @@
 {
-    "name": "saturated-dark-plus",
-    "displayName": "Saturated Dark+",
-    "description": "Saturated version of the default Dark+ theme",
-    "version": "0.0.3",
-    "publisher": "chneau",
-    "repository": "https://github.com/chneau/vscode-saturated-dark-plus",
-    "engines": {
-        "vscode": "^1.28.0"
-    },
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Saturated Dark+",
-                "uiTheme": "vs-dark",
-                "path": "./themes/Saturated Dark+-color-theme.json"
-            }
-        ]
-    }
+  "name": "saturated-dark-plus",
+  "displayName": "Saturated Dark+",
+  "description": "Saturated version of the default Dark+ theme",
+  "version": "0.0.4",
+  "publisher": "chneau",
+  "repository": "https://github.com/chneau/vscode-saturated-dark-plus",
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Saturated Dark+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Saturated Dark+-color-theme.json"
+      }
+    ]
+  }
 }
