@@ -3,11 +3,12 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 
-	"github.com/chneau/tt"
 	"github.com/lucasb-eyer/go-colorful"
 )
 
@@ -31,7 +32,7 @@ func saturate(val string, saturation float64) (string, error) {
 }
 
 func main() {
-	defer tt.T()()
+	defer func(start time.Time) { fmt.Println("Main executed in", time.Since(start)) }(time.Now())
 	file, err := ioutil.ReadFile("default-dark-theme-vscode.json")
 	panicIf(err)
 	theme := Theme{}
