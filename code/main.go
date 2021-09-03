@@ -28,7 +28,7 @@ func saturate(val string, saturation float64) (string, error) {
 		newColor := cf.Hex()
 		return strings.ReplaceAll(val, val[:7], newColor), nil
 	}
-	return "", errors.New("size")
+	return "", errors.New(fmt.Sprint("Invalid color: ", val))
 }
 
 func main() {

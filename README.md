@@ -10,7 +10,7 @@ It's the basic Dark+ with more saturation.
 - `Ctrl+shift+p` and type `Generate Color`
 - Copy paste to file `default-dark-theme-vscode.json`
 - Close the extensionless vscode
-- Uncomment commented lines
+- Uncomment commented lines and remove null values
 - Run the go code
 - Test by pressing `F5`
 - `npm install -g vsce`
