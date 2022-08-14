@@ -17,7 +17,6 @@ func saturate(val string, saturation float64) (string, error) {
 		cf := lo.Must(colorful.Hex(val[:7]))
 		h, s, v := cf.Hsv()
 		cf = colorful.Hsv(h, s*saturation, v).Clamped()
-		colorful.FastHappyColor()
 		newColor := cf.Hex()
 		return strings.ReplaceAll(val, val[:7], newColor), nil
 	}
