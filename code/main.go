@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 	alljson := lo.Must(json.Marshal(theme))
-	lo.Must0(os.WriteFile("../themes/Saturated Dark+-color-theme.json", []byte(alljson), os.ModePerm))
+	lo.Must0(os.WriteFile("../themes/Saturated Dark+-color-theme.json", alljson, os.ModePerm))
 }
 
 // Theme ...
