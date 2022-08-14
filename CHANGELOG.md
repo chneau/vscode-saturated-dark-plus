@@ -10,6 +10,12 @@ http://keepachangelog.com/
 
 ## [Unreleased]
 
+## [1.0.4] - 2022-08-14
+
+### Changed
+
+- Marketplace look and feel.
+
 ## [1.0.3] - 2022-08-14
 
 ### Changed
