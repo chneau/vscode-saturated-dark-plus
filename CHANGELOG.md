@@ -10,7 +10,7 @@ http://keepachangelog.com/
 
 ## [Unreleased]
 
-## [1.0.4] - 2022-08-14
+## [1.0.3] - 2022-08-14
 
 ### Changed
 
