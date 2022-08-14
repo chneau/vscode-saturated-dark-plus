@@ -4,24 +4,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 	"time"
 
 	"github.com/lucasb-eyer/go-colorful"
+	"github.com/samber/lo"
 )
-
-func panicIf(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
 
 func saturate(val string, saturation float64) (string, error) {
 	if len(val) > 6 {
-		cf, err := colorful.Hex(val[:7])
-		panicIf(err)
+		cf := lo.Must(colorful.Hex(val[:7]))
 		h, s, v := cf.Hsv()
 		cf = colorful.Hsv(h, s*saturation, v).Clamped()
 		colorful.FastHappyColor()
@@ -33,27 +26,22 @@ func saturate(val string, saturation float64) (string, error) {
 
 func main() {
 	defer func(start time.Time) { fmt.Println("Main executed in", time.Since(start)) }(time.Now())
-	file, err := ioutil.ReadFile("default-dark-theme-vscode.json")
-	panicIf(err)
+	file := lo.Must(os.ReadFile("default-dark-theme-vscode.json"))
 	theme := Theme{}
 	theme.Name = "Saturated Dark+"
-	panicIf(json.Unmarshal(file, &theme))
+	lo.Must0(json.Unmarshal(file, &theme))
 	for key, val := range theme.Colors {
-		res, err := saturate(val, 1.5)
-		panicIf(err)
+		res := lo.Must(saturate(val, 1.5))
 		theme.Colors[key] = res
 	}
 	for i, val := range theme.TokenColors {
 		if val.Settings.Foreground != nil {
-			res, err := saturate(*val.Settings.Foreground, 2.3)
-			panicIf(err)
+			res := lo.Must(saturate(*val.Settings.Foreground, 2.3))
 			theme.TokenColors[i].Settings.Foreground = &res
 		}
 	}
-	alljson, err := json.Marshal(theme)
-	panicIf(err)
-	err = ioutil.WriteFile("../themes/Saturated Dark+-color-theme.json", []byte(alljson), os.ModePerm)
-	panicIf(err)
+	alljson := lo.Must(json.Marshal(theme))
+	lo.Must0(os.WriteFile("../themes/Saturated Dark+-color-theme.json", []byte(alljson), os.ModePerm))
 }
 
 // Theme ...
