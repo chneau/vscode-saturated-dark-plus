@@ -54,9 +54,9 @@ type Theme struct {
 
 // TokenColor ...
 type TokenColor struct {
-	Scope    interface{} `json:"scope"`
-	Settings Settings    `json:"settings"`
-	Name     *string     `json:"name,omitempty"`
+	Scope    any      `json:"scope"`
+	Settings Settings `json:"settings"`
+	Name     *string  `json:"name,omitempty"`
 }
 
 // Settings ...
