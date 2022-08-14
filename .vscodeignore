@@ -1,4 +1,4 @@
-.vscode/**
-.vscode-test/**
-.gitignore
-vsc-extension-quickstart.md
+**
+!themes
+!LICENSE
+!images/icon.png

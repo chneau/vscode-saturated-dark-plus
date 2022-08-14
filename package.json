@@ -2,9 +2,13 @@
   "name": "saturated-dark-plus",
   "displayName": "Saturated Dark+",
   "description": "Saturated version of the default Dark+ theme",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "publisher": "chneau",
-  "repository": "https://github.com/chneau/vscode-saturated-dark-plus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chneau/vscode-saturated-dark-plus"
+  },
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.28.0"
   },
