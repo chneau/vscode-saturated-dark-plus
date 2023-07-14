@@ -66,3 +66,7 @@ It reads the default theme as a json file configuration, and it adds saturation 
 h, s, v := cf.Hsv()
 cf = colorful.Hsv(h, s*value, v).Clamped() // value is 1.5 for theme.Colors and 2.3 for theme.TokenColors foregrounds
 ```
+
+## TODO:
+
+- Make it download the files from the official repo: https://github.com/microsoft/vscode/tree/main/extensions/theme-defaults/themes
