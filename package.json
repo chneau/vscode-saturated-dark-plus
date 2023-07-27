@@ -23,6 +23,9 @@
   "categories": [
     "Themes"
   ],
+  "scripts": {
+    "start": "npm run --cwd code start"
+  },
   "contributes": {
     "themes": [
       {

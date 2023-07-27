@@ -3,6 +3,8 @@ import { parse } from "json5";
 import { format } from "prettier";
 import { Theme } from "./models";
 
+const start = new Date();
+const msSinceStartInMs = () => new Date().getTime() - start.getTime();
 const downloadTheme = async (themeName: string) => {
   const url = `https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/${themeName}.json`;
   const response = await fetch(url);
@@ -11,7 +13,9 @@ const downloadTheme = async (themeName: string) => {
   return theme;
 };
 
+console.log(`${msSinceStartInMs()}ms: Starting...`);
 const [dark, darkPlus] = await Promise.all([downloadTheme("dark_vs"), downloadTheme("dark_plus")]);
+console.log(`${msSinceStartInMs()}ms: Downloaded themes...`);
 
 // fuse everything together
 const theme: Theme = {
@@ -22,6 +26,7 @@ const theme: Theme = {
   colors: { ...dark.colors, ...darkPlus.colors },
   include: undefined,
 };
+console.log(`${msSinceStartInMs()}ms: Fused themes...`);
 
 // create a copy with saturated colors
 const saturatedTheme: Theme = { ...theme, name: "Saturated Dark+" };
@@ -42,4 +47,12 @@ for (const key in saturatedTheme.tokenColors) {
   const [h, s, v, a] = color.hsv().array();
   saturatedTheme.tokenColors[key].settings.foreground = color.hsv(h, s * 2.3, v, a).hexa();
 }
-await Bun.write("../themes/Saturated Dark+-color-theme.json", await format(JSON.stringify(saturatedTheme), { parser: "json" }));
+console.log(`${msSinceStartInMs()}ms: Saturated colors...`);
+
+const prettyFormat = await format(JSON.stringify(saturatedTheme), { parser: "json" });
+
+console.log(`${msSinceStartInMs()}ms: Formatted theme...`);
+
+await Bun.write("../themes/Saturated Dark+-color-theme.json", prettyFormat);
+
+console.log(`${msSinceStartInMs()}ms: Wrote saturated theme...`);
