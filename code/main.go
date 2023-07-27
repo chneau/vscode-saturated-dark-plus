@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -23,8 +25,47 @@ func saturate(val string, saturation float64) (string, error) {
 	return "", errors.New(fmt.Sprint("Invalid color: ", val))
 }
 
+func downloadFileToByteArray(url string) ([]byte, error) {
+	resp, err := http.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	return bytes, nil
+}
+
+func downloadDefaultDarkTheme() {
+	darkPlusBytes, err := downloadFileToByteArray("https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/dark_plus.json")
+	lo.Must0(err)
+	darkPlusTheme, err := UnmarshalTheme(darkPlusBytes)
+	lo.Must0(err)
+
+	darkBytes, err := downloadFileToByteArray("https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/dark_vs.json")
+	lo.Must0(err)
+	darkTheme, err := UnmarshalTheme(darkBytes)
+	lo.Must0(err)
+
+	// Merge dark_plus into dark
+	for key, val := range darkPlusTheme.Colors {
+		darkTheme.Colors[key] = val
+	}
+	for key, val := range darkPlusTheme.SemanticTokenColors {
+		darkTheme.SemanticTokenColors[key] = val
+	}
+	darkTheme.TokenColors = append(darkTheme.TokenColors, darkPlusTheme.TokenColors...)
+
+	// Write to file in a pretty format
+	alljson := lo.Must(json.MarshalIndent(darkTheme, "", "  "))
+	lo.Must0(os.WriteFile("default-dark-theme-vscode.json", alljson, os.ModePerm))
+}
+
 func main() {
 	defer func(start time.Time) { fmt.Println("Main executed in", time.Since(start)) }(time.Now())
+	downloadDefaultDarkTheme()
 	file := lo.Must(os.ReadFile("default-dark-theme-vscode.json"))
 	theme := Theme{}
 	theme.Name = "Saturated Dark+"
@@ -41,26 +82,4 @@ func main() {
 	}
 	alljson := lo.Must(json.Marshal(theme))
 	lo.Must0(os.WriteFile("../themes/Saturated Dark+-color-theme.json", alljson, os.ModePerm))
-}
-
-// Theme ...
-type Theme struct {
-	Name        string            `json:"name"`
-	Schema      string            `json:"$schema"`
-	Type        string            `json:"type"`
-	Colors      map[string]string `json:"colors"`
-	TokenColors []TokenColor      `json:"tokenColors"`
-}
-
-// TokenColor ...
-type TokenColor struct {
-	Scope    any      `json:"scope"`
-	Settings Settings `json:"settings"`
-	Name     *string  `json:"name,omitempty"`
-}
-
-// Settings ...
-type Settings struct {
-	Foreground *string `json:"foreground,omitempty"`
-	FontStyle  *string `json:"fontStyle,omitempty"`
 }
