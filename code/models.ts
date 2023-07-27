@@ -1,5 +1,5 @@
 export interface Theme {
-  schema: string;
+  $schema: string;
   name: string;
   include?: string;
   tokenColors: TokenColor[];
