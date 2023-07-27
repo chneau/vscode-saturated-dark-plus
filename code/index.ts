@@ -1,3 +1,4 @@
+import Color from "color";
 import { parse } from "json5";
 import { format } from "prettier";
 import { Theme } from "./models";
@@ -22,5 +23,23 @@ const theme: Theme = {
   include: undefined,
 };
 
-// save theme as default-dark-theme-vscode.json
-await Bun.write("default-dark-theme-vscode.json", await format(JSON.stringify(theme), { parser: "json" }));
+// create a copy with saturated colors
+const saturatedTheme: Theme = { ...theme, name: "Saturated Dark+" };
+for (const key in saturatedTheme.colors) {
+  const color = Color(saturatedTheme.colors[key]);
+  const [h, s, v, a] = color.hsv().array();
+  saturatedTheme.colors[key] = color.hsv(h, s * 1.5, v, a).hexa();
+}
+for (const key in saturatedTheme.semanticTokenColors) {
+  const color = Color(saturatedTheme.semanticTokenColors[key]);
+  const [h, s, v, a] = color.hsv().array();
+  saturatedTheme.semanticTokenColors[key] = color.hsv(h, s * 1.5, v, a).hexa();
+}
+for (const key in saturatedTheme.tokenColors) {
+  const hex = saturatedTheme.tokenColors[key].settings.foreground;
+  if (!hex) continue;
+  const color = Color(hex);
+  const [h, s, v, a] = color.hsv().array();
+  saturatedTheme.tokenColors[key].settings.foreground = color.hsv(h, s * 2.3, v, a).hexa();
+}
+await Bun.write("../themes/Saturated Dark+-color-theme.json", await format(JSON.stringify(saturatedTheme), { parser: "json" }));
