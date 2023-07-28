@@ -70,3 +70,16 @@ cf = colorful.Hsv(h, s*value, v).Clamped() // value is 1.5 for theme.Colors and 
 ## TODO:
 
 - Make it download the files from the official repo: https://github.com/microsoft/vscode/tree/main/extensions/theme-defaults/themes
+
+## Dev log
+
+```bash
+# Go to https://dev.azure.com/chneau/_usersSettings/tokens
+# Go to https://code.visualstudio.com/api/references/icons-in-labels for icon names
+# Go to https://systeminformation.io/general.html for system info
+# Go to https://marketplace.visualstudio.com/items?itemName=chneau.resource-monitor to see the extension
+bun i -g @vscode/vsce
+bun run build
+vsce package
+vsce publish # enter fresh token from https://dev.azure.com/chneau/_usersSettings/tokens
+```
