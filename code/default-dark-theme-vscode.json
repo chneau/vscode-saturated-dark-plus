@@ -6,8 +6,8 @@
     "editor.background": "#1E1E1E",
     "editor.foreground": "#D4D4D4",
     "editor.inactiveSelectionBackground": "#3A3D41",
-    "editorIndentGuide.background": "#404040",
-    "editorIndentGuide.activeBackground": "#707070",
+    "editorIndentGuide.background1": "#404040",
+    "editorIndentGuide.activeBackground1": "#707070",
     "editor.selectionHighlightBackground": "#ADD6FF26",
     "list.dropBackground": "#383B3D",
     "activityBarBadge.background": "#007ACC",
@@ -25,14 +25,16 @@
     "tab.lastPinnedBorder": "#ccc3",
     "list.activeSelectionIconForeground": "#FFF",
     "terminal.inactiveSelectionBackground": "#3A3D41",
-    "widget.border": "#303031"
+    "widget.border": "#303031",
+    "actionBar.toggledBackground": "#383a49"
   },
   "tokenColors": [
     {
       "scope": [
         "meta.embedded",
         "source.groovy.embedded",
-        "string meta.image.inline.markdown"
+        "string meta.image.inline.markdown",
+        "variable.legacy.builtin.python"
       ],
       "settings": { "foreground": "#D4D4D4" }
     },
@@ -52,7 +54,10 @@
     },
     { "scope": "constant.regexp", "settings": { "foreground": "#646695" } },
     { "scope": "entity.name.tag", "settings": { "foreground": "#569cd6" } },
-    { "scope": "entity.name.tag.css", "settings": { "foreground": "#d7ba7d" } },
+    {
+      "scope": ["entity.name.tag.css", "entity.name.tag.less"],
+      "settings": { "foreground": "#d7ba7d" }
+    },
     {
       "scope": "entity.other.attribute-name",
       "settings": { "foreground": "#9cdcfe" }
@@ -60,10 +65,11 @@
     {
       "scope": [
         "entity.other.attribute-name.class.css",
-        "entity.other.attribute-name.class.mixin.css",
+        "source.css entity.other.attribute-name.class",
         "entity.other.attribute-name.id.css",
         "entity.other.attribute-name.parent-selector.css",
-        "entity.other.attribute-name.pseudo-class.css",
+        "entity.other.attribute-name.parent.less",
+        "source.css entity.other.attribute-name.pseudo-class",
         "entity.other.attribute-name.pseudo-element.css",
         "source.css.less entity.other.attribute-name.id",
         "entity.other.attribute-name.scss"
@@ -152,7 +158,7 @@
         "support.type.property-name",
         "variable.css",
         "variable.scss",
-        "variable.other.less",
+        "source.css.less variable.other",
         "source.coffee.embedded"
       ],
       "settings": { "foreground": "#9cdcfe" }
@@ -273,6 +279,7 @@
         "source.cpp keyword.operator.new",
         "keyword.operator.delete",
         "keyword.other.using",
+        "keyword.other.directive.using",
         "keyword.other.operator",
         "entity.name.operator"
       ],

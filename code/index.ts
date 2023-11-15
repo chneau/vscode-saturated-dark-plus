@@ -1,9 +1,9 @@
 import { format } from "prettier";
-import { Theme } from "./models";
 import { downloadTheme, fuseThemes, saturateTheme } from "./functions";
+import { Theme } from "./models";
 
 const start = new Date();
-const msSinceStartInMs = () => new Date().getTime() - start.getTime();
+const msSinceStartInMs = () => (new Date().getTime() - start.getTime()).toString().padStart(3, " ");
 console.log(`${msSinceStartInMs()}ms: Starting...`);
 
 // download the themes
