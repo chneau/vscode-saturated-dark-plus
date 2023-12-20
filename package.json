@@ -2,9 +2,15 @@
   "name": "saturated-dark-plus",
   "displayName": "Saturated Dark+",
   "description": "Saturated version of the default Dark+ theme",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "chneau",
   "license": "MIT",
+  "scripts": {
+    "start": "npm run --cwd code start",
+    "build": "npm run --cwd code build",
+    "upgrade": "npm run --cwd code upgrade",
+    "publish": "npm run build && vsce package && vsce publish"
+  },
   "galleryBanner": {
     "color": "#1E1E1E",
     "theme": "dark"
@@ -23,9 +29,6 @@
   "categories": [
     "Themes"
   ],
-  "scripts": {
-    "start": "npm run --cwd code start"
-  },
   "contributes": {
     "themes": [
       {
