@@ -1,41 +1,38 @@
 {
-  "name": "saturated-dark-plus",
-  "displayName": "Saturated Dark+",
-  "description": "Saturated version of the default Dark+ theme",
-  "version": "1.0.7",
-  "publisher": "chneau",
-  "license": "MIT",
-  "scripts": {
-    "start": "npm run --cwd code start",
-    "build": "npm run --cwd code build",
-    "upgrade": "npm run --cwd code upgrade",
-    "publish": "npm run build && vsce package && vsce publish"
-  },
-  "galleryBanner": {
-    "color": "#1E1E1E",
-    "theme": "dark"
-  },
-  "keywords": [
-    "dark"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chneau/vscode-saturated-dark-plus"
-  },
-  "icon": "images/icon.png",
-  "engines": {
-    "vscode": "^1.70.1"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "contributes": {
-    "themes": [
-      {
-        "label": "Saturated Dark+",
-        "uiTheme": "vs-dark",
-        "path": "./themes/Saturated Dark+-color-theme.json"
-      }
-    ]
-  }
+	"name": "saturated-dark-plus",
+	"displayName": "Saturated Dark+",
+	"description": "Saturated version of the default Dark+ theme",
+	"version": "1.0.8",
+	"publisher": "chneau",
+	"license": "MIT",
+	"scripts": {
+		"start": "bun run --cwd code start",
+		"build": "bun run --cwd code build",
+		"upgrade": "bun run --cwd code upgrade",
+		"publish": "bun run build && vsce package && vsce publish",
+		"check": "biome check --apply-unsafe ."
+	},
+	"galleryBanner": {
+		"color": "#1E1E1E",
+		"theme": "dark"
+	},
+	"keywords": ["dark"],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chneau/vscode-saturated-dark-plus"
+	},
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.70.1"
+	},
+	"categories": ["Themes"],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Saturated Dark+",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Saturated Dark+-color-theme.json"
+			}
+		]
+	}
 }

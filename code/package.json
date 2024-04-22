@@ -1,18 +1,19 @@
 {
-  "name": "code",
-  "module": "index.ts",
-  "type": "module",
-  "scripts": {
-    "start": "bun run dev",
-    "dev": "bun run --watch index.ts",
-    "build": "bun run index.ts",
-    "upgrade": "npm-check-updates --upgrade && bun install"
-  },
-  "dependencies": {
-    "@types/color": "^3.0.6",
-    "bun-types": "^1.0.29",
-    "color": "^4.2.3",
-    "json5": "^2.2.3",
-    "typescript": "^5.3.3"
-  }
+	"name": "code",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"start": "bun run dev",
+		"dev": "bun run --watch index.ts",
+		"build": "bun run index.ts && bun run check",
+		"upgrade": "npm-check-updates --upgrade --install=always --packageManager=bun",
+		"check": "biome check --apply-unsafe ."
+	},
+	"dependencies": {
+		"@types/color": "^3.0.6",
+		"bun-types": "^1.1.4",
+		"color": "^4.2.3",
+		"json5": "^2.2.3",
+		"typescript": "^5.4.5"
+	}
 }
