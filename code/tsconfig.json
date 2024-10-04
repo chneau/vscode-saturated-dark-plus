@@ -14,8 +14,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"allowJs": true,
 		"noEmit": true,
-		"types": [
-			"bun-types" // add Bun global
-		]
+		"types": ["bun-types"],
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true,
+		"noFallthroughCasesInSwitch": true
 	}
 }

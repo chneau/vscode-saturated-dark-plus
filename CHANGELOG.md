@@ -10,6 +10,12 @@ http://keepachangelog.com/
 
 ## [Unreleased]
 
+## [1.0.10] - 2024-10-05
+
+## Changed
+
+- Updated dependencies.
+
 ## [1.0.9] - 2024-09-05
 
 ## Changed
