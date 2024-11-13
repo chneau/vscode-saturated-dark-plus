@@ -2,7 +2,7 @@
 	"name": "saturated-dark-plus",
 	"displayName": "Saturated Dark+",
 	"description": "Saturated version of the default Dark+ theme",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"publisher": "chneau",
 	"license": "MIT",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"build": "bun run --cwd code build",
 		"upgrade": "bun run --cwd code upgrade",
 		"publish": "bun run build && vsce package && vsce publish",
-		"check": "biome check --write --unsafe ."
+		"all": "bun run --cwd code all"
 	},
 	"galleryBanner": {
 		"color": "#1E1E1E",
