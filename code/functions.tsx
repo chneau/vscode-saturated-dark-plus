@@ -1,4 +1,4 @@
-import Color from "color";
+import Color, { type ColorInstance } from "color";
 import { parse } from "json5";
 import type { Theme } from "./models";
 
@@ -29,7 +29,7 @@ export const fuseThemes = (...themes: Theme[]) => {
 	}
 	return fusedTheme;
 };
-const colorToHsva = (color: Color<string>) => {
+const colorToHsva = (color: ColorInstance) => {
 	const [h, s, v, a] = color.hsv().array();
 	if (h === undefined || s === undefined || v === undefined) {
 		throw new Error(`Invalid color: ${color}`);
