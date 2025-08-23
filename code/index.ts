@@ -8,7 +8,7 @@ const finalFile = "../themes/Saturated Dark+-color-theme.json";
 
 const start = new Date();
 const msSinceStartInMs = () =>
-	(new Date().getTime() - start.getTime()).toString().padStart(3, " ");
+	(Date.now() - start.getTime()).toString().padStart(3, " ");
 console.log(`${msSinceStartInMs()}ms: Starting...`);
 
 // download the themes

@@ -13,9 +13,9 @@
 	},
 	"dependencies": {
 		"@types/color": "^4.2.0",
-		"bun-types": "^1.2.15",
+		"bun-types": "^1.2.20",
 		"color": "^5.0.0",
 		"json5": "^2.2.3",
-		"typescript": "^5.8.3"
+		"typescript": "^5.9.2"
 	}
 }
