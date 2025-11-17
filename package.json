@@ -2,7 +2,7 @@
 	"name": "saturated-dark-plus",
 	"displayName": "Saturated Dark+",
 	"description": "Saturated version of the default Dark+ theme",
-	"version": "1.0.14",
+	"version": "1.0.15",
 	"publisher": "chneau",
 	"license": "MIT",
 	"scripts": {
@@ -38,5 +38,8 @@
 				"path": "./themes/Saturated Dark+-color-theme.json"
 			}
 		]
+	},
+	"devDependencies": {
+		"@vscode/vsce": "^3.7.0"
 	}
 }
