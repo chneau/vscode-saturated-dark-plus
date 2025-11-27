@@ -9,7 +9,7 @@
 		"start": "bun run --cwd code start",
 		"build": "bun run --cwd code build",
 		"upgrade": "bun run --cwd code upgrade",
-		"publish": "bun run build && vsce package && vsce publish",
+		"publish": "bun run build && vsce publish; ovsx publish",
 		"all": "bun run --cwd code all"
 	},
 	"galleryBanner": {
