@@ -9,7 +9,7 @@
 		"start": "bun run --cwd code start",
 		"build": "bun run --cwd code build",
 		"upgrade": "bun run --cwd code upgrade",
-		"publish": "bun run build && vsce publish; ovsx publish",
+		"publish": "bun run build && vsce publish --no-dependencies; ovsx publish --no-dependencies",
 		"all": "bun run --cwd code all"
 	},
 	"galleryBanner": {
@@ -40,6 +40,7 @@
 		]
 	},
 	"devDependencies": {
-		"@vscode/vsce": "^3.7.0"
+		"@vscode/vsce": "^3.7.0",
+		"ovsx": "^1.1.1"
 	}
 }
