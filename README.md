@@ -29,9 +29,3 @@ improves contrast and makes syntax highlighting pop.
 2. Search for `Saturated Dark+`.
 3. Click **Install**.
 4. Select the theme from the **Themes** list.
-
-<div align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=chneau.saturated-dark-plus">
-    <img src="https://img.shields.io/visual-studio-marketplace/v/chneau.saturated-dark-plus?style=for-the-badge&label=VS%20Marketplace&color=007acc" alt="Visual Studio Marketplace Version" />
-  </a>
-</div>
